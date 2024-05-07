@@ -79,6 +79,39 @@ function RestauranteFisico(nombre, menuFisico){
 RestauranteFisico.prototype = Object.create(Restaurante.prototype);
 RestauranteFisico.prototype.constructor = RestauranteFisico;
 
-Restaurante.prototype.eliminarPlato= function (){
+RestauranteFisico.prototype.eliminarPlato= function (){
     console.log("eliminado plato")
+}
+
+
+function Menu(plato){
+    this.plato = plato;
+}
+
+function MenuQR(plato, url){
+    Menu.call(this, plato)
+    this.url = url;
+}
+
+menuQr.prototype.generarQR = function(){
+    console.log("generando")
+}
+
+MenuQR.prototype = Object.create(Menu.prototype);
+MenuQR.prototype.constructor = MenuQR;
+
+function MenuFisico(plato, platoTipo){
+    Menu.call(this, plato)
+    this.platoTipo = platoTipo;
+}
+
+MenuFisico.prototype = Object.create(Menu.prototype);
+MenuFisico.prototype.constructor = MenuFisico;
+
+MenuFisico.prototype.impresion= function (){
+    console.log("imprimiendo menu")
+}
+
+MenuFisico.prototype.visualizacion= function (){
+    console.log("visualizar menu")
 }
