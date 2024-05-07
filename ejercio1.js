@@ -1,5 +1,3 @@
-// ejercicio 1
-
 function Usurios(nombre, email, clave){
     this.nombre = nombre;
     this.email = email;
@@ -10,6 +8,9 @@ function Cliente(nombre, email, clave, puntoAcumulados){
     Usurios.call(this, nombre, email, clave)
     this.puntoAcumulados = puntoAcumulados;
 }
+
+Cliente.prototype = Object.create(Usurios.prototype);
+Cliente.prototype.constructor = Cliente;
 
 Cliente.prototype.acumularPuntos = function () {
     return console.log("acula los puntos del usuairo")
@@ -23,6 +24,9 @@ function Administrador(nombre, email, clave,  id){
     Usurios.call(this, nombre, email, clave)
     this.id = id;
 }
+
+Administrador.prototype = Object.create(Usurios.prototype);
+Administrador.prototype.constructor = Administrador;
 
 Administrador.prototype.agregarProductos = function () {
     return console.log("agregar un producto")
@@ -53,6 +57,10 @@ function ProductosDigitales(nombre, puntosNecesarios, cantidadDisponibles, preci
     this.url = url;
 }
 
+
+ProductosDigitales.prototype = Object.create(Productos.prototype);
+ProductosDigitales.prototype.constructor = ProductosDigitales;
+
 ProductosDigitales.prototype.descargar = function(){
     console.log("se descarga el producto digital")
 }
@@ -65,6 +73,9 @@ function ProductosFisico(nombre, puntosNecesarios, cantidadDisponibles, precio, 
     Productos.call(this, nombre, puntosNecesarios, cantidadDisponibles, precio, stock)
     this.color = color;
 }
+
+ProductosFisico.prototype = Object.create(Productos.prototype);
+ProductosFisico.prototype.constructor = ProductosFisico;
 
 ProductosFisico.prototype.actualizarStock = function(){
     console.log("se actualiza el stock")
@@ -105,5 +116,3 @@ OrdenCanje.prototype.confirmarOrden = function(){
 OrdenCanje.prototype.cancelarOrden = function(){
     console.log("se cancela el pedido")
 }
-
-// ejercicio 2
